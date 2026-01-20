@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Sidebar } from './components/Sidebar';
@@ -92,36 +92,34 @@ const App: React.FC = () => {
   }, [activeCategory, activeType, searchQuery, posts]);
 
   return (
-    <BrowserRouter>
-      <div className="app-container">
-        <Navbar onOpenEncyclopedia={() => setEncyclopediaOpen(true)} />
+    <div className="app-container">
+      <Navbar onOpenEncyclopedia={() => setEncyclopediaOpen(true)} />
 
-        <Routes>
-          <Route path="/" element={
-            <HomePage
-              posts={filteredPosts}
-              isLoading={isLoading}
-              activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
-              activeType={activeType}
-              setActiveType={setActiveType}
-              setSearchQuery={setSearchQuery}
-            />
-          } />
-          <Route path="/post/:id" element={<BlogPostDetail />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={
+          <HomePage
+            posts={filteredPosts}
+            isLoading={isLoading}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            activeType={activeType}
+            setActiveType={setActiveType}
+            setSearchQuery={setSearchQuery}
+          />
+        } />
+        <Route path="/post/:id" element={<BlogPostDetail />} />
+      </Routes>
 
-        <EncyclopediaDrawer
-          isOpen={encyclopediaOpen}
-          onClose={() => setEncyclopediaOpen(false)}
-        />
+      <EncyclopediaDrawer
+        isOpen={encyclopediaOpen}
+        onClose={() => setEncyclopediaOpen(false)}
+      />
 
-        <footer className="footer">
-          <div className="footer-glow"></div>
-          <p>&copy; 2026 Autophagy Encyclopedia Directory. Aggregating science-backed renewal strategies.</p>
-        </footer>
-      </div>
-    </BrowserRouter>
+      <footer className="footer">
+        <div className="footer-glow"></div>
+        <p>&copy; 2026 Autophagy Encyclopedia Directory. Aggregating science-backed renewal strategies.</p>
+      </footer>
+    </div>
   );
 };
 
