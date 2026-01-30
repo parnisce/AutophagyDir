@@ -332,8 +332,8 @@
 /* Directory Grid */
 .directory-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .resource-card {
@@ -640,6 +640,12 @@
   display: block;
 }
 
+@media (max-width: 1400px) {
+  .directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1200px) {
   .post-detail-grid {
     grid-template-columns: 1fr;
@@ -653,6 +659,10 @@
 
   .sidebar {
     display: none;
+  }
+
+  .directory-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
