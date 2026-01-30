@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Video, FileText, Share2, Microscope, Mail, Image as ImageIcon } from 'lucide-react';
+import { Video, FileText, Share2, Microscope, Mail, Image as ImageIcon } from 'lucide-react';
 
 interface HeroProps {
     onSearch: (query: string) => void;
