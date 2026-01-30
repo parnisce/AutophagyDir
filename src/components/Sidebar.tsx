@@ -17,9 +17,9 @@ const CATEGORIES = [
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeCategory, onCategoryChange }) => {
     return (
-        <aside className="sidebar glass-morphism">
+        <aside className="sidebar">
             <div className="sidebar-group">
-                <h3 className="group-title">Directories</h3>
+                <h3 className="group-title">DIRECTORIES</h3>
                 <div className="category-list">
                     {CATEGORIES.map((cat) => (
                         <button
@@ -34,7 +34,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeCategory, onCategoryChan
                 </div>
             </div>
 
-            <div className="sidebar-promo glass-morphism">
+            <div className="sidebar-promo">
                 <h4>Stay Updated</h4>
                 <p>Get the latest press releases and research directly in your inbox.</p>
                 <button className="promo-btn">Join Newsletter</button>

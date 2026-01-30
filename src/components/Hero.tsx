@@ -27,13 +27,11 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, activeType, onTypeChange }
 
     return (
         <section className="hero-section">
-            <div className="hero-overlay"></div>
             <div className="hero-content">
                 <h1 className="gradient-text">Cellular Renewal Directory</h1>
                 <p>The web's most comprehensive catalog of research, toolsets, and nutritional strategies for biological optimization through autophagy.</p>
 
-                <form className="hero-search-bar glass-morphism" onSubmit={handleSearch}>
-                    <Search className="search-icon" />
+                <form className="hero-search-bar" onSubmit={handleSearch}>
                     <input
                         type="text"
                         placeholder="Search research, tools, or strategies..."
@@ -50,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, activeType, onTypeChange }
                     {CONTENT_TYPES.map((type) => (
                         <button
                             key={type.id}
-                            className={`type-pill glass-morphism ${activeType === type.id ? 'active' : ''}`}
+                            className={`type-pill ${activeType === type.id ? 'active' : ''}`}
                             onClick={() => onTypeChange(type.id)}
                         >
                             {type.icon}

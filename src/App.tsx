@@ -48,6 +48,17 @@ const App: React.FC = () => {
   const [activeType, setActiveType] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [encyclopediaOpen, setEncyclopediaOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
@@ -93,7 +104,11 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <Navbar onOpenEncyclopedia={() => setEncyclopediaOpen(true)} />
+      <Navbar
+        onOpenEncyclopedia={() => setEncyclopediaOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <Routes>
         <Route path="/" element={
