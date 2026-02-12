@@ -6,6 +6,10 @@ import { Sidebar } from './components/Sidebar';
 import { DirectoryGrid } from './components/DirectoryGrid';
 import { EncyclopediaDrawer } from './components/EncyclopediaDrawer';
 import { BlogPostDetail } from './components/BlogPostDetail';
+import { TrendingPage } from './components/TrendingPage';
+import { RecentPage } from './components/RecentPage';
+import { PopularPage } from './components/PopularPage';
+import { ContactPage } from './components/ContactPage';
 import { fetchAutophagyFeeds } from './services/rssService';
 import type { BlogPost } from './types';
 import './App.css';
@@ -123,6 +127,10 @@ const App: React.FC = () => {
           />
         } />
         <Route path="/post/:id" element={<BlogPostDetail />} />
+        <Route path="/trending" element={<TrendingPage posts={posts} isLoading={isLoading} />} />
+        <Route path="/recent" element={<RecentPage posts={posts} isLoading={isLoading} />} />
+        <Route path="/popular" element={<PopularPage posts={posts} isLoading={isLoading} />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
 
       <EncyclopediaDrawer

@@ -1,5 +1,6 @@
 import React from 'react';
-import { BookOpen, TrendingUp, Clock, Star, Moon, Sun } from 'lucide-react';
+import { NavLink, Link } from 'react-router-dom';
+import { BookOpen, TrendingUp, Clock, Star, Moon, Sun, Mail } from 'lucide-react';
 
 interface NavbarProps {
     onOpenEncyclopedia: () => void;
@@ -11,14 +12,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEncyclopedia, theme, onTog
     return (
         <nav className="navbar">
             <div className="nav-container">
-                <div className="nav-logo">
+                <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
                     <span className="logo-text">AUTOPHAGY <span className="accent">DIR</span></span>
-                </div>
+                </Link>
 
                 <div className="nav-links">
-                    <a href="#trending" className="nav-link"><TrendingUp size={18} /> Trending</a>
-                    <a href="#recent" className="nav-link"><Clock size={18} /> Recent</a>
-                    <a href="#popular" className="nav-link"><Star size={18} /> Popular</a>
+                    <NavLink to="/trending" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <TrendingUp size={18} /> Trending
+                    </NavLink>
+                    <NavLink to="/recent" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <Clock size={18} /> Recent
+                    </NavLink>
+                    <NavLink to="/popular" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <Star size={18} /> Popular
+                    </NavLink>
+                    <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <Mail size={18} /> Contact
+                    </NavLink>
 
                     <button
                         className="theme-toggle"
