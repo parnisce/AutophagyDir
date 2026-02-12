@@ -4,6 +4,7 @@ import type { BlogPost } from '../types';
 import { fetchAutophagyFeeds } from '../services/rssService';
 import { slugify } from '../utils/slugify';
 import { ArrowLeft, ExternalLink, Calendar, MapPin, Sparkles, Clock, Eye, Share2, Copy, Check } from 'lucide-react';
+import { CommentsSystem } from './CommentsSystem';
 
 export const BlogPostDetail: React.FC = () => {
     const { category, slug } = useParams<{ category: string; slug: string }>();
@@ -117,6 +118,11 @@ export const BlogPostDetail: React.FC = () => {
                             </div>
                         </footer>
                     </article>
+
+                    {/* YouTube Style Comments Section */}
+                    <div className="comments-section-wrapper">
+                        <CommentsSystem />
+                    </div>
                 </div>
 
                 <aside className="detail-sidebar">
