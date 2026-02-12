@@ -451,7 +451,7 @@
 
 .action-btn {
   text-decoration: none;
-  color: #22D3EE;
+  color: var(--primary);
   font-weight: 800;
   font-size: 0.85rem;
   display: flex;
