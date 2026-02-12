@@ -204,31 +204,33 @@ export const AutophagyCalculator: React.FC = () => {
                                 <div className="result-card start-card">
                                     <span className="card-label">Autophagy Start</span>
                                     <div className="card-value-box">
-                                        <span className="value">{result.start} hours</span>
+                                        <span className="value blue-text">{result.start} hours</span>
                                         <span className="sub">into your fast</span>
                                     </div>
                                 </div>
                                 <div className="result-card peak-card">
                                     <span className="card-label">Peak Autophagy</span>
                                     <div className="card-value-box">
-                                        <span className="value">{result.peak} hours</span>
+                                        <span className="value pink-text">{result.peak} hours</span>
                                         <span className="sub">into your fast</span>
                                     </div>
                                 </div>
                                 <div className="result-card secondary-card">
                                     <span className="card-label">Calories Burned</span>
-                                    <div className="card-value">{result.calories} kcal</div>
+                                    <div className="card-value-display">
+                                        <span className="value">{result.calories} kcal</span>
+                                    </div>
                                 </div>
                                 <div className="result-card secondary-card">
                                     <span className="card-label">Water Intake</span>
-                                    <div className="card-value">{result.water} liters</div>
+                                    <div className="card-value-display">
+                                        <span className="value">{result.water} liters</span>
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="difficulty-section">
-                                <div className="difficulty-header">
-                                    <span>Difficulty Level</span>
-                                </div>
+                                <div className="difficulty-header">Difficulty Level</div>
                                 <div className="difficulty-bar">
                                     <div className="difficulty-fill" style={{ width: `${result.difficulty}%` }}></div>
                                 </div>

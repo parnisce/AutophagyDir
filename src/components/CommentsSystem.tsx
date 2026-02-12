@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ThumbsUp, ThumbsDown, Share2, MoreVertical, CornerUpRight, ListFilter, X, Facebook, Mail, Twitter } from 'lucide-react';
+import './CommentsSystem.css';
 
-
+// Force reload for design update 
 interface Comment {
     id: string;
     user: string;
@@ -135,9 +136,7 @@ export const CommentsSystem: React.FC = () => {
                         <Share2 size={20} />
                         <span>Share</span>
                     </button>
-                    <button className="interaction-btn secondary more-btn">
-                        <MoreVertical size={20} />
-                    </button>
+
                 </div>
             </div>
 

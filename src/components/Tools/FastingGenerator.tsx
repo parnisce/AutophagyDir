@@ -60,7 +60,8 @@ export const FastingGenerator: React.FC = () => {
             setResult({
                 totalHours,
                 avgHours,
-                periods
+                periods,
+                id: Date.now()
             });
             setIsGenerating(false);
         }, 600);
@@ -90,7 +91,7 @@ export const FastingGenerator: React.FC = () => {
             </div>
 
             {result && (
-                <div className="autophagy-tracker-section animate-fade-in">
+                <div key={result.id} className="autophagy-tracker-section animate-fade-in">
                     <div className="autophagy-tracker-container glass-morphism">
                         <h3 className="tracker-title">Autophagy Timeline Tracker</h3>
                         <div className="tracker-progress-wrapper">

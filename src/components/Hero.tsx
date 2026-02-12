@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Video, FileText, Share2, Microscope, Mail, Image as ImageIcon } from 'lucide-react';
+import { Video, FileText, Share2, Microscope, Mail, Image as ImageIcon, LayoutGrid, FlaskConical, Utensils, Zap, Clock, Info } from 'lucide-react';
 
 interface HeroProps {
     onSearch: (query: string) => void;
     activeType: string;
     onTypeChange: (type: string) => void;
+    activeCategory: string;
+    onCategoryChange: (cat: string) => void;
 }
 
 const CONTENT_TYPES: { id: string; label: string; icon: React.ReactNode }[] = [
@@ -17,7 +19,16 @@ const CONTENT_TYPES: { id: string; label: string; icon: React.ReactNode }[] = [
     { id: 'video', label: 'Video', icon: <Video size={16} /> },
 ];
 
-export const Hero: React.FC<HeroProps> = ({ onSearch, activeType, onTypeChange }) => {
+const CATEGORIES = [
+    { id: 'all', name: 'All', icon: LayoutGrid },
+    { id: 'research', name: 'Science', icon: FlaskConical },
+    { id: 'nutrition', name: 'Foods', icon: Utensils },
+    { id: 'tools', name: 'Tools', icon: Zap },
+    { id: 'fasting', name: 'Strategies', icon: Clock },
+    { id: 'health', name: 'Longevity', icon: Info },
+];
+
+export const Hero: React.FC<HeroProps> = ({ onSearch, activeType, onTypeChange, activeCategory, onCategoryChange }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleSearch = (e: React.FormEvent) => {
@@ -53,6 +64,19 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, activeType, onTypeChange }
                         >
                             {type.icon}
                             <span>{type.label}</span>
+                        </button>
+                    ))}
+                </div>
+
+                <div className="mobile-category-filters">
+                    {CATEGORIES.map((cat) => (
+                        <button
+                            key={cat.id}
+                            className={`category-pill ${activeCategory === cat.id ? 'active' : ''}`}
+                            onClick={() => onCategoryChange(cat.id)}
+                        >
+                            <cat.icon size={14} />
+                            <span>{cat.name}</span>
                         </button>
                     ))}
                 </div>

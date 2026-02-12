@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calculator, Calendar, CheckCircle2 } from 'lucide-react';
+import { Calculator, Calendar, CheckCircle2, Wrench } from 'lucide-react';
 
 
 export const ToolsPage: React.FC = () => {
     return (
         <div className="tools-page">
             <div className="tools-hero">
+                <div className="listing-hero-icon tools-icon">
+                    <Wrench size={36} />
+                </div>
                 <h1 className="gradient-text">Interactive Tools</h1>
                 <p>Explore our collection of interactive tools designed to help you optimize your fasting and autophagy journey.</p>
             </div>

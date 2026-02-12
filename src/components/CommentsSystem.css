@@ -1,0 +1,468 @@
+/* ==============================
+   COMMENTS & SOCIAL SYSTEM
+   ============================== */
+
+.comments-system-container {
+    max-width: 900px;
+    margin: 2rem auto 5rem;
+    padding: 0 1rem;
+}
+
+/* Post Interaction Bar (YouTube Style) */
+.post-interaction-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.interaction-group {
+    display: flex;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border-glass);
+    border-radius: 40px;
+    overflow: hidden;
+    height: 44px;
+}
+
+.interaction-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.8rem;
+    background: transparent;
+    border: none;
+    color: var(--text-highlight);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.interaction-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.interaction-btn.active {
+    color: var(--primary);
+}
+
+.like-btn.active svg {
+    color: #3b82f6;
+    fill: #3b82f6;
+}
+
+.dislike-btn.active svg {
+    color: #ef4444;
+    fill: #ef4444;
+}
+
+.btn-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-glass);
+    align-self: center;
+}
+
+.interaction-btn.secondary {
+    border-radius: 40px;
+    border: 1px solid var(--border-glass);
+    background: var(--bg-sidebar);
+}
+
+.more-btn {
+    width: 48px;
+    padding: 0;
+    justify-content: center;
+}
+
+/* Comments Header & Sort */
+.comments-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.comment-count {
+    font-size: 1.4rem;
+    font-weight: 950;
+    color: var(--text-highlight);
+    font-family: var(--font-display);
+}
+
+.sort-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-highlight);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Add Comment Section */
+.add-comment-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.user-avatar {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid var(--border-glass) !important;
+}
+
+.comment-input-area {
+    flex: 1;
+}
+
+.comment-input-area input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-glass);
+    padding: 0.75rem 0;
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.comment-input-area input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.input-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 700;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.comment-btn-submit {
+    background: var(--primary);
+    border: none;
+    color: white;
+    font-weight: 800;
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.comment-btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--primary-glow);
+}
+
+/* Comments List & Threads */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.comment-item {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.comment-body {
+    flex: 1;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.user-handle {
+    font-weight: 800;
+    color: var(--text-highlight);
+    font-size: 0.95rem;
+}
+
+.time-ago {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.comment-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: 0.8rem;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.action-likes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-btn-small {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.action-btn-small:hover {
+    color: var(--text-highlight);
+}
+
+.count-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 10px;
+}
+
+.action-btn-text {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+}
+
+.action-btn-text:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-highlight);
+}
+
+.replies-toggle {
+    margin-top: 0.8rem;
+}
+
+.toggle-replies-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+.toggle-replies-btn:hover {
+    text-decoration: underline;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+.replies-list {
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--border-glass);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.more-options-btn {
+    opacity: 0;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0.5rem;
+}
+
+.comment-item:hover .more-options-btn {
+    opacity: 1;
+}
+
+/* Share Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.share-modal {
+    width: 100%;
+    max-width: 520px;
+    background: #0f172a;
+    border: 1px solid var(--border-glass);
+    border-radius: 32px;
+    padding: 3rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.modal-header h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--text-highlight);
+    font-family: var(--font-display);
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: var(--text-muted);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.social-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon.fb {
+    background: #1877f2;
+}
+
+.social-icon.wa {
+    background: #25d366;
+}
+
+.social-icon.tw {
+    background: #000000;
+}
+
+.social-icon.ml {
+    background: #ea4335;
+}
+
+.copy-link-area {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-glass);
+}
+
+.link-input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.copy-btn-main {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1.8rem;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.copy-btn-main.copied {
+    background: #10b981;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(25px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

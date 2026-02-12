@@ -33,6 +33,8 @@ const HomePage: React.FC<{
         onSearch={setSearchQuery}
         activeType={activeType}
         onTypeChange={setActiveType}
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
       />
       <main className="main-content">
         <Sidebar
@@ -59,14 +61,12 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const loadData = async () => {
