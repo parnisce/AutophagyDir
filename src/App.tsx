@@ -10,6 +10,10 @@ import { TrendingPage } from './components/TrendingPage';
 import { RecentPage } from './components/RecentPage';
 import { PopularPage } from './components/PopularPage';
 import { ContactPage } from './components/ContactPage';
+import { ToolsPage } from './components/Tools/ToolsPage';
+import { AutophagyCalculator } from './components/Tools/AutophagyCalculator';
+import { FastingGenerator } from './components/Tools/FastingGenerator';
+
 import { fetchAutophagyFeeds } from './services/rssService';
 import type { BlogPost } from './types';
 import './App.css';
@@ -126,10 +130,13 @@ const App: React.FC = () => {
             setSearchQuery={setSearchQuery}
           />
         } />
-        <Route path="/post/:id" element={<BlogPostDetail />} />
+        <Route path="/:category/:slug" element={<BlogPostDetail />} />
         <Route path="/trending" element={<TrendingPage posts={posts} isLoading={isLoading} />} />
         <Route path="/recent" element={<RecentPage posts={posts} isLoading={isLoading} />} />
         <Route path="/popular" element={<PopularPage posts={posts} isLoading={isLoading} />} />
+        <Route path="/tools" element={<ToolsPage />} />
+        <Route path="/tools/autophagy-calculator" element={<AutophagyCalculator />} />
+        <Route path="/tools/fasting-generator" element={<FastingGenerator />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
 

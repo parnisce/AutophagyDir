@@ -2,24 +2,45 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import type { BlogPost } from '../types';
 import { fetchAutophagyFeeds } from '../services/rssService';
-import { ArrowLeft, ExternalLink, Calendar, MapPin, Sparkles, Clock, Eye } from 'lucide-react';
+import { slugify } from '../utils/slugify';
+import { ArrowLeft, ExternalLink, Calendar, MapPin, Sparkles, Clock, Eye, Share2, Copy, Check } from 'lucide-react';
 
 export const BlogPostDetail: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
+    const { category, slug } = useParams<{ category: string; slug: string }>();
     const [post, setPost] = useState<BlogPost | null>(null);
     const [loading, setLoading] = useState(true);
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         const loadPost = async () => {
             setLoading(true);
             const posts = await fetchAutophagyFeeds();
-            const found = posts.find(p => p.id === id);
+            // Find post by slugifying title and comparing, and checking category
+            const found = posts.find(p => slugify(p.title) === slug && p.category.toLowerCase() === category?.toLowerCase());
             setPost(found || null);
             setLoading(false);
             window.scrollTo(0, 0);
         };
         loadPost();
-    }, [id]);
+    }, [category, slug]);
+
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    const handleShare = (platform: 'twitter' | 'facebook' | 'linkedin') => {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(post?.title || '');
+        let shareUrl = '';
+
+        if (platform === 'twitter') shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+        if (platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        if (platform === 'linkedin') shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    };
 
     if (loading) {
         return (
@@ -33,7 +54,7 @@ export const BlogPostDetail: React.FC = () => {
     if (!post) {
         return (
             <div className="detail-error">
-                <h2>Feed not found</h2>
+                <h2>Resource not found</h2>
                 <Link to="/" className="back-link">Return to Directory</Link>
             </div>
         );
@@ -79,14 +100,21 @@ export const BlogPostDetail: React.FC = () => {
                         </section>
 
                         <footer className="detail-footer">
-                            <a
-                                href={post.sourceUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="full-content-btn"
-                            >
-                                Read Full Article at {post.source} <ExternalLink size={20} />
-                            </a>
+                            <div className="detail-actions">
+                                <a
+                                    href={post.sourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="full-content-btn"
+                                >
+                                    Read Full Article <ExternalLink size={20} />
+                                </a>
+
+                                <button onClick={handleCopyLink} className="share-btn copy-btn glass-morphism">
+                                    {copied ? <Check size={18} /> : <Copy size={18} />}
+                                    {copied ? 'Copied!' : 'Copy Link'}
+                                </button>
+                            </div>
                         </footer>
                     </article>
                 </div>
@@ -103,6 +131,21 @@ export const BlogPostDetail: React.FC = () => {
                                 <Sparkles size={18} />
                                 <span>{post.type.charAt(0).toUpperCase() + post.type.slice(1)}</span>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="sidebar-box share-box glass-morphism" style={{ padding: '2rem', borderRadius: '24px', marginBottom: '2rem' }}>
+                        <h3 className="group-title" style={{ marginBottom: '1.5rem' }}>Share Resource</h3>
+                        <div className="share-grid">
+                            <button onClick={() => handleShare('twitter')} className="share-icon-btn tw">
+                                <Share2 size={18} /> Twitter
+                            </button>
+                            <button onClick={() => handleShare('facebook')} className="share-icon-btn fb">
+                                <Share2 size={18} /> Facebook
+                            </button>
+                            <button onClick={() => handleShare('linkedin')} className="share-icon-btn li">
+                                <Share2 size={18} /> LinkedIn
+                            </button>
                         </div>
                     </div>
 

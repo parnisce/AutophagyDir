@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { BookOpen, TrendingUp, Clock, Star, Moon, Sun, Mail } from 'lucide-react';
+import { BookOpen, TrendingUp, Clock, Star, Moon, Sun, Mail, Wrench } from 'lucide-react';
 
 interface NavbarProps {
     onOpenEncyclopedia: () => void;
@@ -25,6 +25,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEncyclopedia, theme, onTog
                     </NavLink>
                     <NavLink to="/popular" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                         <Star size={18} /> Popular
+                    </NavLink>
+                    <NavLink to="/tools" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                        <Wrench size={18} /> Tools
                     </NavLink>
                     <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                         <Mail size={18} /> Contact

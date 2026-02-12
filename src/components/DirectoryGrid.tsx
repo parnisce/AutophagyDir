@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import type { BlogPost } from '../types';
+import { slugify } from '../utils/slugify';
 import { ExternalLink, Eye, Clock as TimeIcon } from 'lucide-react';
 
 interface DirectoryGridProps {
@@ -31,7 +32,7 @@ export const DirectoryGrid: React.FC<DirectoryGridProps> = ({ posts, isLoading }
     return (
         <div className="directory-grid">
             {posts.map((post) => (
-                <Link to={`/post/${post.id}`} key={post.id} className="resource-link">
+                <Link to={`/${post.category.toLowerCase()}/${slugify(post.title)}`} key={post.id} className="resource-link">
                     <article className="resource-card glass-morphism">
                         <div className={`card-header type-${post.type}`}>
                             <span className="source-badge">{post.source}</span>
